@@ -1,0 +1,230 @@
+/* Fonts loaded via <link> in index.html (non-render-blocking with preconnect). */
+
+:root {
+  /* Default theme is Lime — overridden by [data-theme] below. */
+  --accent: #a3e635;
+  --accent-muted: rgba(163, 230, 53, 0.88);
+  --accent-soft: rgba(163, 230, 53, 0.12);
+  --accent-contrast: #0b0b0d;
+
+  --bg: #0b0b0d;
+  --bg-elevated: #111114;
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --surface-active: rgba(255, 255, 255, 0.075);
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+
+  --text: #f5f5f7;
+  --text-muted: rgba(245, 245, 247, 0.6);
+  --text-dim: rgba(245, 245, 247, 0.38);
+
+  /* Liquid glass — saturate amplifies background colors through frosted layer */
+  --glass-blur: saturate(180%) blur(24px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Small, restrained radii */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --font-family: 'Inter', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+
+  --primary: var(--accent);
+  --primary-hover: var(--accent-muted);
+  --secondary: var(--accent-muted);
+  --background: var(--bg);
+  --accent-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  --accent-gradient-soft: rgba(255, 255, 255, 0.06);
+  --accent-glow: 0 4px 20px rgba(163, 230, 53, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: -0.005em;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: all 0.18s var(--ease);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Global accent focus for inputs, selects, textareas */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent) !important;
+  outline: none;
+}
+input[type="range"] {
+  accent-color: var(--accent);
+}
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Hairline scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.glass {
+  background: var(--surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s var(--ease) forwards;
+}
+
+/* =================================================================
+   Theme overrides — set [data-theme] on <html>.
+   Only --accent / --primary / --secondary swap so the rest of the
+   neutral surface palette stays calm.
+   ================================================================= */
+:root[data-theme="lime"] {
+  --accent: #a3e635;
+  --accent-muted: rgba(163, 230, 53, 0.88);
+  --accent-soft: rgba(163, 230, 53, 0.12);
+  --accent-contrast: #0b0b0d;
+  --primary: #a3e635;
+  --primary-hover: #bef264;
+  --secondary: #84cc16;
+  --accent-glow: 0 4px 20px rgba(163, 230, 53, 0.35);
+}
+:root[data-theme="azure"] {
+  --accent: #3b82f6;
+  --accent-muted: rgba(59, 130, 246, 0.88);
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  --accent-contrast: #ffffff;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --secondary: #2563eb;
+  --accent-glow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+:root[data-theme="rose"] {
+  --accent: #f43f5e;
+  --accent-muted: rgba(244, 63, 94, 0.88);
+  --accent-soft: rgba(244, 63, 94, 0.12);
+  --accent-contrast: #ffffff;
+  --primary: #f43f5e;
+  --primary-hover: #fb7185;
+  --secondary: #e11d48;
+  --accent-glow: 0 4px 20px rgba(244, 63, 94, 0.4);
+}
+:root[data-theme="violet"] {
+  --accent: #8b5cf6;
+  --accent-muted: rgba(139, 92, 246, 0.88);
+  --accent-soft: rgba(139, 92, 246, 0.12);
+  --accent-contrast: #ffffff;
+  --primary: #8b5cf6;
+  --primary-hover: #a78bfa;
+  --secondary: #7c3aed;
+  --accent-glow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+:root[data-theme="amber"] {
+  --accent: #f59e0b;
+  --accent-muted: rgba(245, 158, 11, 0.88);
+  --accent-soft: rgba(245, 158, 11, 0.12);
+  --accent-contrast: #0b0b0d;
+  --primary: #f59e0b;
+  --primary-hover: #fbbf24;
+  --secondary: #d97706;
+  --accent-glow: 0 4px 20px rgba(245, 158, 11, 0.4);
+}
+:root[data-theme="mono"] {
+  --accent: #ffffff;
+  --accent-muted: rgba(255, 255, 255, 0.85);
+  --accent-soft: rgba(255, 255, 255, 0.08);
+  --accent-contrast: #0b0b0d;
+  --primary: #ffffff;
+  --primary-hover: rgba(255, 255, 255, 0.85);
+  --secondary: rgba(255, 255, 255, 0.85);
+  --accent-glow: none;
+}
+
+/* =================================================================
+   Legacy UI mode — square corners, no glass blur, classic gray
+   surfaces. Activated by [data-ui-mode="legacy"] on <html>.
+   ================================================================= */
+:root[data-ui-mode="legacy"] {
+  --bg: #1d1f24;
+  --bg-elevated: #25282f;
+  --surface: #2c2f37;
+  --surface-hover: #353941;
+  --surface-active: #3e424c;
+  --border: #3a3d45;
+  --border-strong: #4a4e58;
+  --glass-blur: none;
+  --r-xs: 0px;
+  --r-sm: 0px;
+  --r-md: 0px;
+  --r-lg: 0px;
+}
+:root[data-ui-mode="legacy"] .glass,
+:root[data-ui-mode="legacy"] .card {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+:root[data-ui-mode="legacy"] .animate-fade-in {
+  animation: none !important;
+}
+:root[data-ui-mode="legacy"] button {
+  transition: none;
+}
