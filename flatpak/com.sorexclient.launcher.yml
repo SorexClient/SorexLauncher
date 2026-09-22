@@ -37,5 +37,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/SorexClient/SorexLauncher.git
-        commit: c93ef71bd3639eb2ff2c96b22e26aea4cc7b759c
+        commit: e36b38c
       - generated-sources.json
