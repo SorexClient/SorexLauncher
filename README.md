@@ -1,4 +1,6 @@
-# Svelte + TS + Vite
+# Sorex Launcher
+
+Sorex Launcher is a Minecraft launcher built with Svelte, TypeScript, Vite, and Electron.
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
 
